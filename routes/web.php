@@ -12,5 +12,28 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
+
+Route::get('/user', function () {
+    return view('User');
+});
+
+Route::get('/business', function () {
+    return view('Business');
+});
+
+Route::get('/menu', function () {
+    return view('Menu');
+});
+
+Route::get('/orders', function () {
+    return view('Orders');
+});
+
+Route::get('/deliver', function () {
+    return view('Deliver');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

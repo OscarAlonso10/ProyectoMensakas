@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-  <h1>Proyecto Mensakas:Orders</h1>
+  <h1>AdminPanel:Orders</h1>
   <div class="btn-group-vertical">
 
     <a href="{{ url('/user') }}" class="btn btn-primary">User</a>

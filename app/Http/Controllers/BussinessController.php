@@ -11,7 +11,7 @@ class BussinessController extends Controller
     *
     * @return Response
     */
-   public function index()
+   public function read()
    {
        //
    	$bussiness = Bussinessonsumer::all();

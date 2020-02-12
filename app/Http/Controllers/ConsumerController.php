@@ -11,7 +11,7 @@ class ConsumerController extends Controller
     *
     * @return Response
     */
-   public function index()
+   public function read()
    {
        //
    	$consumer = Consumer::all();

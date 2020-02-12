@@ -12,7 +12,7 @@ class MensakasController extends Controller
     *
     * @return Response
     */
-   public function index()
+   public function read()
    {
        //
    	$mensakas = Mensakas::all();

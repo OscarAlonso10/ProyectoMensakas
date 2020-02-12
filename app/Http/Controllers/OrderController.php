@@ -8,7 +8,7 @@ use App\Orders;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function read()
    {
        //
     $order = Order::all();

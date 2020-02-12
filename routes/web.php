@@ -27,6 +27,7 @@ Route::get('/menu', function () {
     return view('Menu');
 });
 
+
 Route::get('/orders', function () {
     return view('Orders');
 });
@@ -34,6 +35,7 @@ Route::get('/orders', function () {
 Route::get('/deliver', function () {
     return view('Deliver');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

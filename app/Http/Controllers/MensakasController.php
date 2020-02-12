@@ -26,7 +26,9 @@ class MensakasController extends Controller
     */
    public function create()
    {
-       //
+         $mensakas = new Mensakas();
+
+        return view('mensakas.create')->with(compact('mensakas'));
    }
 
    /**

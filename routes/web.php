@@ -41,3 +41,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user','UserController@index');
+
+Route::get('/mensakas','MensakasController@index');
+
+Route::get('/business','BussinessController@index');
+Route::get('/consumer','ConsumerController@index');
+Route::get('/orders','OrderController@index');
+Route::get('/userbusiness','UserBusinessController@index');

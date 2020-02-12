@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User\Consumer;
-class BussinessController extends Controller
+class ConsumerController extends Controller
 {
     /**
     * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BussinessController extends Controller
    public function index()
    {
        //
-   	$bussiness = Bussinessonsumer::all();
-   	return view( "Bussiness", ["bussiness"=>$bussiness] );
+   	$consumer = Consumer::all();
+   	return view( "Consumer", ["consumers"=>$consumer] );
    }
 
    /**

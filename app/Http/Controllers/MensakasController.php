@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User\Consumer;
-class BussinessController extends Controller
+use App\User\Mensakas;
+
+class MensakasController extends Controller
 {
     /**
     * Display a listing of the resource.
@@ -14,8 +15,8 @@ class BussinessController extends Controller
    public function index()
    {
        //
-   	$bussiness = Bussinessonsumer::all();
-   	return view( "Bussiness", ["bussiness"=>$bussiness] );
+   	$mensakas = Mensakas::all();
+   	return view( "Mensakas", ["mensakas"=>$mensakas] );
    }
 
    /**

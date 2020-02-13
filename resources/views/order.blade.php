@@ -64,13 +64,13 @@
      <h1>Panel Admin: Order</h1>
   <div class="btn-group-horizont">
 
-    <a href="business" class="btn btn-primary">Business</a>
+    <a href="/business" class="btn btn-primary">Business</a>
 
-    <a href="consumer" class="btn btn-primary">Consumer</a>
+    <a href="/consumer" class="btn btn-primary">Consumer</a>
 
-    <a href="order" class="btn btn-primary">Orders</a>
+    <a href="/order" class="btn btn-primary">Orders</a>
 
-    <a href="deliverer" class="btn btn-primary">Deliverer</a>
+    <a href="/deliverer" class="btn btn-primary">Deliverer</a>
   </div>
 	<h1>Order {{$order->idOrder}}</h1>
 

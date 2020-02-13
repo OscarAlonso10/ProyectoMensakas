@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Bill::class, function (Faker $faker) {
     return [
-        'token' => $faker->text($maxNbChars = 255),
+        'token' => $faker->text($maxNbChars = 225),
         'fk_order_id'=> rand(1,50)
             
     ];

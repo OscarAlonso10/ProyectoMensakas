@@ -7,12 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
     return [
-        $table->bigIncrements('idOrder');
-            $table->string('name', 45);
-            $table->string('status', 45)->nullable();
-            $table->json('json');
-
-            $table->unsignedBigInteger('fk_deliverer_id');
-            $table->foreign('fk_deliverer_id')->references('idDeliverer')->on('Deliverer')->onDelete('cascade');
+    		'name' => $faker->name,
+    		'status' => $faker->text($maxNbChars = 45),
+    		'json'=>$faker->text,
+    		'fk_deliverer_id'=> rand(1,50),
+    		
+          
     ];
 });

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Consumer;
+use App\Business;
 
-class ConsumerController extends Controller
+class BusinessController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class ConsumerController extends Controller
      */
     public function index()
     {
-        $consumers = Consumer::all()->sortByDesc("created_at");
+        $business = Business::all()->sortByDesc("created_at");
 
 
-    return view('llista_consumers',["consumers"=>$consumers]);
+    return view('llista_business',["business"=>$business]);
 
     }
 
@@ -48,12 +48,12 @@ class ConsumerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idConsumer)
+    public function show($idBusiness)
     {
-        $Consumer = Consumer::find($idConsumer);
+        $business = Business::find($idBusiness);
 
 
-        return view('consumer',["consumer"=>$consumer]);
+        return view('business',["business"=>$business]);
     }
 
     /**
@@ -90,4 +90,3 @@ class ConsumerController extends Controller
         //
     }
 }
-

@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
     <div id="app" >
@@ -38,7 +35,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="home" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/login" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -64,9 +61,8 @@
             @yield('content')
         </main>
     </div>
-    <div class="container">
-  <h1>AdminPanel</h1>
-  <div class="btn-group-vertical">
+    <h1>Panel Admin: Deliver</h1>
+  <div class="btn-group-horizont">
 
     <a href="business" class="btn btn-primary">Business</a>
 
@@ -76,6 +72,13 @@
 
     <a href="deliverer" class="btn btn-primary">Deliverer</a>
   </div>
-</div>
+	<h1>Deliverer {{$deliverer->idDeliverer}}</h1>
+
+	<a>{{$deliverer->first_name}}</a>
+	<a>{{$deliverer->last_name}}</a>
+	<a>{{$deliverer->phone}}</a>
+	<a>{{$deliverer->email}}</a>
+
+	
 </body>
 </html>

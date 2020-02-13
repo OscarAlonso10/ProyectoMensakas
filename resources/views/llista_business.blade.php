@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+	<title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <div id="app" >
+  <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #9c9c9c;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color:white;">
@@ -38,7 +35,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="home" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/login" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -64,9 +61,8 @@
             @yield('content')
         </main>
     </div>
-    <div class="container">
-  <h1>AdminPanel</h1>
-  <div class="btn-group-vertical">
+    <h1>Panel Admin: Business</h1>
+  <div class="btn-group-horizont">
 
     <a href="business" class="btn btn-primary">Business</a>
 
@@ -76,6 +72,26 @@
 
     <a href="deliverer" class="btn btn-primary">Deliverer</a>
   </div>
-</div>
+	<h1>Business</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Adress</th>
+        <th>Email</th>
+        <th>Number</th>
+        <th>Z.Code</th>
+      </tr>
+		@foreach($business as $busines)  
+          <tr>
+            <td >{{$busines->name}}</td>
+            <td >{{$busines->location}}</td>
+            <td >{{$busines->adress}}</td>
+            <td>{{$busines->email}}</td>
+            <td>{{$busines->number}}</td>
+            <td>{{$busines->zipcode}}</td>
+          </tr>
+    @endforeach
+    </table> 
 </body>
 </html>

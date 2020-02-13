@@ -1,5 +1,8 @@
 <?php
-
+use App\Business;
+use App\Consumer;
+use App\Deliverer;
+use App\Order;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,41 +13,43 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('layout');
 })->middleware('auth');
 
-Route::get('/user', function () {
-    return view('User');
-});
+Route::get('/business/{idBusiness}', function ($idBusiness) {
+    $business = Business::find($idBusiness);
 
-Route::get('/business', function () {
-    return view('Business');
-});
+    return view('business',["business"=>$business]);
+})->middleware('auth');
 
-Route::get('/menu', function () {
-    return view('Menu');
-});
+Route::get('/consumer/{idConsumer}', function ($idConsumer) {
+    $consumer = Consumer::find($idConsumer);
 
+    return view('consumer',["consumer"=>$consumer]);
+})->middleware('auth');
 
-Route::get('/orders', function () {
-    return view('Orders');
-});
+Route::get('/deliverer/{idDeliverer}', function ($idDeliverer) {
+    $deliverer = Deliverer::find($idDeliverer);
 
-Route::get('/deliver', function () {
-    return view('Deliver');
-});
+    return view('deliverer',["deliverer"=>$deliverer]);
+})->middleware('auth');
+
+Route::get('/order/{idOrder}', function ($idOrder) {
+    $order = Order::find($idOrder);
+
+    return view('order',["order"=>$order]);
+})->middleware('auth');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user','UserController@index');
+Route::resource("business","BusinessController")->middleware('auth');
 
-Route::get('/mensakas','MensakasController@index');
+Route::resource("deliverer","MensakasController")->middleware('auth');
 
-Route::get('/business','BussinessController@index');
-Route::get('/consumer','ConsumerController@index');
-Route::get('/orders','OrderController@index');
-Route::get('/userbusiness','UserBusinessController@index');
+Route::resource("consumer","ConsumerController")->middleware('auth');
+
+Route::resource("order","OrderController")->middleware('auth');

@@ -12,13 +12,39 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
+})->middleware('auth');
+
+Route::get('/user', function () {
+    return view('User');
+});
+
+Route::get('/business', function () {
+    return view('Business');
+});
+
+Route::get('/menu', function () {
+    return view('Menu');
+});
+
+
+Route::get('/orders', function () {
+    return view('Orders');
+});
+
+Route::get('/deliver', function () {
+    return view('Deliver');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('/user','UserController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mensakas','MensakasController@index');
+
+Route::get('/business','BussinessController@index');
+Route::get('/consumer','ConsumerController@index');
+Route::get('/orders','OrderController@index');
+Route::get('/userbusiness','UserBusinessController@index');

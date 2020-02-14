@@ -71,7 +71,7 @@
     <a href="/order" class="btn btn-primary">Orders</a>
 
     <a href="/deliverer" class="btn btn-primary">Deliverer</a>
-  </div>
+¡  </div>
 	<h1>Consumer {{$consumer->idConsumer}}</h1>
 
 	<a>{{$consumer->first_name}}</a>

@@ -71,6 +71,9 @@
     <a href="order" class="btn btn-primary">Orders</a>
 
     <a href="deliverer" class="btn btn-primary">Deliverer</a>
+
+    <a href="consumer/create" class="btn btn-primary">Crear Consumer</a>
+
   </div>
 	<h1>Consumers</h1>
     <table>

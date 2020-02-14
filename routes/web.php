@@ -41,6 +41,9 @@ Route::get('/order/{idOrder}', function ($idOrder) {
     return view('order',["order"=>$order]);
 })->middleware('auth');
 
+Route::get('/carrito', 'CarritoController@create')->name('carrito');
+   
+Route::get('/products', 'ProductosController@index');
 
 Auth::routes();
 

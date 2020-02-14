@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-  <div id="app" >
+    <div id="app" >
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #9c9c9c;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color:white;">
@@ -61,7 +61,7 @@
             @yield('content')
         </main>
     </div>
-    <h1>Panel Admin: Consumer</h1>
+     <h1>Panel Admin: Order</h1>
   <div class="btn-group-horizont">
 
     <a href="business" class="btn btn-primary">Business</a>
@@ -72,28 +72,25 @@
 
     <a href="deliverer" class="btn btn-primary">Deliverer</a>
 
-    <a href="ca" class="btn btn-primary">Crear Consumer</a>
-
-    <a href="/products" class="btn btn-primary">Products</a>
-
-
   </div>
-	<h1>Consumers</h1>
+    <h1>Orders</h1>
     <table>
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Location</th>
-        <th>phone</th>
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
       </tr>
-      @foreach($consumers as $consumer)  
+      @foreach($products as $product)  
           <tr>
-            <td >{{$consumer->first_name}}</td>
-            <td >{{$consumer->last_name}}</td>
-            <td >{{$consumer->email}}</td>
-            <td>{{$consumer->location}}</td>
-            <td>{{$consumer->phone}}</td>
+            <td >{{$product->idProduct}}</td>
+            <td >{{$product->name}}</td>
+            <td >{{$product->price}}</td>
+            <td >{{$product->idProduct}}</td>
+            <td >{{$product->name}}</td>
+            <td >{{$product->price}}</td>
+            <td >{{$product->idProduct}}</td>
+            <td >{{$product->name}}</td>
+            <td >{{$product->price}}</td>
           </tr>
     @endforeach
     </table> 

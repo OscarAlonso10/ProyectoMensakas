@@ -17,30 +17,6 @@ Route::get('/', function () {
     return view('layout');
 })->middleware('auth');
 
-Route::get('/business/{idBusiness}', function ($idBusiness) {
-    $business = Business::find($idBusiness);
-
-    return view('business',["business"=>$business]);
-})->middleware('auth');
-
-Route::get('/consumer/{idConsumer}', function ($idConsumer) {
-    $consumer = Consumer::find($idConsumer);
-
-    return view('consumer',["consumer"=>$consumer]);
-})->middleware('auth');
-
-Route::get('/deliverer/{idDeliverer}', function ($idDeliverer) {
-    $deliverer = Deliverer::find($idDeliverer);
-
-    return view('deliverer',["deliverer"=>$deliverer]);
-})->middleware('auth');
-
-Route::get('/order/{idOrder}', function ($idOrder) {
-    $order = Order::find($idOrder);
-
-    return view('order',["order"=>$order]);
-})->middleware('auth');
-
 
 Auth::routes();
 

@@ -8,4 +8,8 @@ class Deliverer extends Model
 {
     protected $table = 'deliverer';
     protected $primaryKey = 'idDeliverer';
+
+    protected $fillable = [
+        'first_name','last_name', 'email','phone',
+    ];
 }

@@ -14,10 +14,9 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $business = Business::all()->sortByDesc("created_at");
+        $businesses = Business::all();
 
-
-    return view('business/llista_business',["business"=>$business]);
+        return view('business.index', compact('businesses'));
 
     }
 
@@ -28,7 +27,7 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        //
+        return view('business.create');
     }
 
     /**
@@ -39,7 +38,25 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'location'=>'required',
+            'email'=>'required',
+            'adress'=>'required',
+            'number'=>'required'
+        ]);
+
+        $business = new Business([
+            'name' => $request->get('name'),
+            'location' => $request->get('location'),
+            'email' => $request->get('email'),
+            'adress' => $request->get('adress'),
+            'number'=> $request->get('number'),
+            'zipcode'=> $request->get('zipcode')
+            
+        ]);
+        $business->save();
+        return redirect('/business')->with('success', 'business saved!');
     }
 
     /**
@@ -62,9 +79,9 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Business $business)
     {
-        //
+        return view('business.edit', ["business"=>$business]);
     }
 
     /**
@@ -74,9 +91,25 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Business $business)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'location'=>'required',
+            'email'=>'required',
+            'adress'=>'required',
+            'number'=>'required'
+        ]);
+
+        $business->name =  $request->get('name');
+        $business->location = $request->get('location');
+        $business->email = $request->get('email');
+        $business->adress = $request->get('adress');
+        $business->number = $request->get('number');
+        $business->zipcode = $request->get('zipcode');
+        $business->save();
+        
+        return redirect('/business')->with('success', 'business updated!');
     }
 
     /**
@@ -85,8 +118,10 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Business $business)
     {
-        //
+        $business->delete();
+
+        return redirect('business')->with('success', 'business deleted!');
     }
 }

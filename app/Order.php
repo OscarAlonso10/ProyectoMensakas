@@ -8,4 +8,9 @@ class Order extends Model
 {
     protected $table = 'order';
     protected $primaryKey = 'idOrder';
+
+    protected $fillable = [
+        'name','status', 'json'
+    ];
 }
+

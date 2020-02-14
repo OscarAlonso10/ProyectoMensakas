@@ -8,4 +8,8 @@ class Business extends Model
 {
     protected $table = 'business';
     protected $primaryKey = 'idBusiness';
+
+    protected $fillable = [
+        'name','location', 'adress', 'email','number','zipcode',
+    ];
 }

@@ -13,10 +13,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all()->sortByDesc("created_at");
+        $orders = Order::all();
 
-
-    return view('order/llista_orders',["orders"=>$orders]);
+        return view('order.index', compact('orders'));
 
     }
 
@@ -27,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('order.create');
     }
 
     /**
@@ -38,7 +37,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name'=>'required',
+            'status'=>'required',
+        ]);
+
+        $order = new Order([
+            'name' => $request->get('name'),
+            'status' => $request->get('status'),
+            'json' => $request->get('json'),
+            
+            
+        ]);
+        $order->save();
+        return redirect('/order')->with('success', 'order saved!');
     }
 
     /**
@@ -53,6 +66,7 @@ class OrderController extends Controller
 
 
         return view('order/order',["order"=>$order]);
+
     }
 
     /**
@@ -61,9 +75,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Order $order)
     {
-        //
+        return view('order.edit', ["order"=>$order]);
     }
 
     /**
@@ -73,9 +87,22 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'status'=>'required',
+            
+        ]);
+
+        $order->name =  $request->get('name');
+        $order->status = $request->get('status');
+        $order->json = $request->get('json');
+        
+        
+        $order->save();
+        
+        return redirect('/order')->with('success', 'order updated!');
     }
 
     /**
@@ -84,9 +111,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+       
     }
 }
 

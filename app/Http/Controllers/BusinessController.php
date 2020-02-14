@@ -17,7 +17,7 @@ class BusinessController extends Controller
         $business = Business::all()->sortByDesc("created_at");
 
 
-    return view('llista_business',["business"=>$business]);
+    return view('business/llista_business',["business"=>$business]);
 
     }
 
@@ -53,7 +53,7 @@ class BusinessController extends Controller
         $business = Business::find($idBusiness);
 
 
-        return view('business',["business"=>$business]);
+        return view('business/business',["business"=>$business]);
     }
 
     /**

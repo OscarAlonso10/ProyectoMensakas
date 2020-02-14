@@ -17,7 +17,7 @@ class MensakasController extends Controller
         $deliverer = Deliverer::all()->sortByDesc("created_at");
 
 
-    return view('llista_deliverer',["deliverer"=>$deliverer]);
+    return view('deliverer/llista_deliverer',["deliverer"=>$deliverer]);
 
     }
 
@@ -53,7 +53,7 @@ class MensakasController extends Controller
         $deliverer = Deliverer::find($idDeliverer);
 
 
-        return view('deliverer',["deliverer"=>$deliverer]);
+        return view('deliverer/deliverer',["deliverer"=>$deliverer]);
     }
 
     /**

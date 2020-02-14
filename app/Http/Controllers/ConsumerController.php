@@ -17,7 +17,7 @@ class ConsumerController extends Controller
         $consumers = Consumer::all()->sortByDesc("created_at");
 
 
-    return view('llista_consumers',["consumers"=>$consumers]);
+    return view('consumer/llista_consumers',["consumers"=>$consumers]);
 
     }
 
@@ -53,7 +53,7 @@ class ConsumerController extends Controller
         $Consumer = Consumer::find($idConsumer);
 
 
-        return view('consumer',["consumer"=>$consumer]);
+        return view('consumer/consumer',["consumer"=>$consumer]);
     }
 
     /**

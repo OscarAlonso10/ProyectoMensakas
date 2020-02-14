@@ -16,7 +16,7 @@ class OrderController extends Controller
         $orders = Order::all()->sortByDesc("created_at");
 
 
-    return view('llista_orders',["orders"=>$orders]);
+    return view('order/llista_orders',["orders"=>$orders]);
 
     }
 
@@ -52,7 +52,7 @@ class OrderController extends Controller
         $order = Order::find($idOrder);
 
 
-        return view('order',["order"=>$order]);
+        return view('order/order',["order"=>$order]);
     }
 
     /**

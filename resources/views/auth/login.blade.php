@@ -69,5 +69,6 @@
             </div>
         </div>
     </div>
+    <a href="./loginConsumer" type="button" class="btn btn-dark">Simulation Consumer</a>
 </div>
 @endsection

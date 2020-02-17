@@ -45,6 +45,10 @@ Route::get('/carrito', 'CarritoController@create')->name('carrito');
    
 Route::get('/products', 'ProductosController@index');
 
+Route::get('/loginConsumer', function () {
+    return view('/loginConsumer');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -56,3 +60,5 @@ Route::resource("deliverer","MensakasController")->middleware('auth');
 Route::resource("consumer","ConsumerController")->middleware('auth');
 
 Route::resource("order","OrderController")->middleware('auth');
+
+

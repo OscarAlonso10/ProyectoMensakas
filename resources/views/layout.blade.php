@@ -89,12 +89,14 @@
                         <div class="col-xs-6 col-md-6">
                           <a href="consumer" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Consumer</a>
                           <a href="business" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-home"></span> <br/>Business</a>
-                          <a href="deliverer" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-map-marker"></span> <br/>Mensakas</a>
+                          <a href="deliverer" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-map-marker"></span> <br/>Deliverer</a>
+                          <a href="business_Category" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Business Category</a>
                         </div>
                     <div class="col-xs-6 col-md-6">
-                          <a href="users" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Users</a>
-                          <a href="products" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Products</a>
+                          <a href="pack" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Pack</a>
+                          <a href="product" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Products</a>
                           <a href="order" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-euro"></span> <br/>Orders</a>
+                          <a href="product_Category" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Product Category</a>
                         </div>
                     </div>
                 </div>

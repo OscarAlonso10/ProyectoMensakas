@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product_Category;
 
 class Product_CategoryController extends Controller
 {
@@ -13,7 +14,9 @@ class Product_CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $product_categories = Product_Category::all();
+
+        return view('product_category.index', compact('product_categories'));
     }
 
     /**
@@ -23,7 +26,7 @@ class Product_CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('product_category.create');
     }
 
     /**
@@ -34,7 +37,16 @@ class Product_CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+
+        $product_category = new Product_Category([
+            'name' => $request->get('name')
+            
+        ]);
+        $product_category->save();
+        return redirect('/product_category')->with('success', 'product category saved!');
     }
 
     /**
@@ -43,9 +55,12 @@ class Product_CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idProduct_Category)
     {
-        //
+        $product_category = Product_Category::find($idProduct_Category);
+
+
+        return view('product_category/product_category',["product_category"=>$product_category]);
     }
 
     /**
@@ -54,9 +69,9 @@ class Product_CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product_Category $product_category)
     {
-        //
+        return view('product_category.edit', ["product_category"=>$product_category]);
     }
 
     /**
@@ -66,9 +81,17 @@ class Product_CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product_Category $product_category)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+
+        $product_category->name =  $request->get('name');
+        
+        $product_category->save();
+        
+        return redirect('/product_category')->with('success', 'product category updated!');
     }
 
     /**
@@ -77,8 +100,10 @@ class Product_CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product_Category $product_category)
     {
-        //
+         $product_category->delete();
+
+        return redirect('product_category')->with('success', 'product category deleted!');
     }
 }

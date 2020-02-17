@@ -3,6 +3,7 @@ use App\Business;
 use App\Consumer;
 use App\Deliverer;
 use App\Order;
+use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +30,5 @@ Route::resource("deliverer","MensakasController")->middleware('auth');
 Route::resource("consumer","ConsumerController")->middleware('auth');
 
 Route::resource("order","OrderController")->middleware('auth');
+
+Route::resource("product","ProductController")->middleware('auth');

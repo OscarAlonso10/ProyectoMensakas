@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order;
-class OrderController extends Controller
+use App\Pack;
+
+class PackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $packs = Pack::all();
 
-        return view('order.index', compact('orders'));
-
+        return view('pack.index', compact('packs'));
     }
 
     /**
@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('order.create');
+        return view('pack.create');
     }
 
     /**
@@ -37,21 +37,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'name'=>'required',
-            'status'=>'required',
+            'state'=>'required',
+            'price'=>'required'
         ]);
 
-        $order = new Order([
+        $pack = new Pack([
             'name' => $request->get('name'),
-            'status' => $request->get('status'),
-            'json' => $request->get('json'),
-            
+            'description' => $request->get('description'),
+            'state' => $request->get('state'),
+            'price' => $request->get('price')
             
         ]);
-        $order->save();
-        return redirect('/order')->with('success', 'order saved!');
+        $pack->save();
+        return redirect('/pack')->with('success', 'pack saved!');
     }
 
     /**
@@ -60,13 +60,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idOrder)
+    public function show($idPack)
     {
-        $order = Order::find($idOrder);
+        $pack = Pack::find($idPack);
 
 
-        return view('order/order',["order"=>$order]);
-
+        return view('pack/pack',["pack"=>$pack]);
     }
 
     /**
@@ -75,9 +74,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Pack $pack)
     {
-        return view('order.edit', ["order"=>$order]);
+        return view('pack.edit', ["pack"=>$pack]);
     }
 
     /**
@@ -87,22 +86,23 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Pack $pack)
     {
-        $request->validate([
+         $request->validate([
             'name'=>'required',
-            'status'=>'required',
-            
+            'state'=>'required',
+            'price'=>'required'
         ]);
 
-        $order->name =  $request->get('name');
-        $order->status = $request->get('status');
-        $order->json = $request->get('json');
+        $pack->name =  $request->get('name');
+        $packs->description = $request->get('description');
+        $pack->state = $request->get('state');
+        $pack->price = $request->get('price');
         
+      
+        $pack->save();
         
-        $order->save();
-        
-        return redirect('/order')->with('success', 'order updated!');
+        return redirect('/pack')->with('success', 'pack updated!');
     }
 
     /**
@@ -111,9 +111,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Pack $pack)
     {
-       
+        $pack->delete();
+
+        return redirect('pack')->with('success', 'pack deleted!');
     }
 }
-

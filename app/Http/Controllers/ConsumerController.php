@@ -14,10 +14,9 @@ class ConsumerController extends Controller
      */
     public function index()
     {
-        $consumers = Consumer::all()->sortByDesc("created_at");
+        $consumers = Consumer::all();
 
-
-    return view('llista_consumers',["consumers"=>$consumers]);
+        return view('consumer.index', compact('consumers'));
 
     }
 
@@ -28,7 +27,7 @@ class ConsumerController extends Controller
      */
     public function create()
     {
-        //
+        return view('consumer.create');
     }
 
     /**
@@ -39,7 +38,22 @@ class ConsumerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $consumer = new Consumer([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'email' => $request->get('email'),
+            'location'=>$request->get('location'),
+            'phone' => $request->get('phone'),
+            
+        ]);
+        $consumer->save();
+        return redirect('/consumer')->with('success', 'Consumer saved!');
     }
 
     /**
@@ -50,10 +64,10 @@ class ConsumerController extends Controller
      */
     public function show($idConsumer)
     {
-        $Consumer = Consumer::find($idConsumer);
+        $consumer = Consumer::find($idConsumer);
 
 
-        return view('consumer',["consumer"=>$consumer]);
+        return view('consumer/index',["consumer"=>$consumer]);
     }
 
     /**
@@ -62,9 +76,9 @@ class ConsumerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Consumer $consumer)
     {
-        //
+        return view('consumer.edit', ["consumer"=>$consumer]);
     }
 
     /**
@@ -74,9 +88,22 @@ class ConsumerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Consumer $consumer)
     {
-        //
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $consumer->first_name =  $request->get('first_name');
+        $consumer->last_name = $request->get('last_name');
+        $consumer->email = $request->get('email');
+        $consumer->location = $request->get('location');
+        $consumer->phone = $request->get('phone');
+        $consumer->save();
+
+        return redirect('/consumer')->with('success', 'consumer updated!');
     }
 
     /**
@@ -85,9 +112,11 @@ class ConsumerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Consumer $consumer)
     {
-        //
+        $consumer->delete();
+
+        return redirect('consumer')->with('success', 'Consumer deleted!');
     }
 }
 

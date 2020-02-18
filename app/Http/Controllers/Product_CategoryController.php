@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order;
-class OrderController extends Controller
+use App\Product_Category;
+
+class Product_CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $product_categories = Product_Category::all();
 
-        return view('order.index', compact('orders'));
-
+        return view('product_category.index', compact('product_categories'));
     }
 
     /**
@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('order.create');
+        return view('product_category.create');
     }
 
     /**
@@ -37,21 +37,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'name'=>'required',
-            'status'=>'required',
+            'name'=>'required'
         ]);
 
-        $order = new Order([
-            'name' => $request->get('name'),
-            'status' => $request->get('status'),
-            'json' => $request->get('json'),
-            
+        $product_category = new Product_Category([
+            'name' => $request->get('name')
             
         ]);
-        $order->save();
-        return redirect('/order')->with('success', 'order saved!');
+        $product_category->save();
+        return redirect('/product_category')->with('success', 'product category saved!');
     }
 
     /**
@@ -60,13 +55,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idOrder)
+    public function show($idProduct_Category)
     {
-        $order = Order::find($idOrder);
+        $product_category = Product_Category::find($idProduct_Category);
 
 
-        return view('order/order',["order"=>$order]);
-
+        return view('product_category/product_category',["product_category"=>$product_category]);
     }
 
     /**
@@ -75,9 +69,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Product_Category $product_category)
     {
-        return view('order.edit', ["order"=>$order]);
+        return view('product_category.edit', ["product_category"=>$product_category]);
     }
 
     /**
@@ -87,22 +81,17 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Product_Category $product_category)
     {
         $request->validate([
-            'name'=>'required',
-            'status'=>'required',
-            
+            'name'=>'required'
         ]);
 
-        $order->name =  $request->get('name');
-        $order->status = $request->get('status');
-        $order->json = $request->get('json');
+        $product_category->name =  $request->get('name');
         
+        $product_category->save();
         
-        $order->save();
-        
-        return redirect('/order')->with('success', 'order updated!');
+        return redirect('/product_category')->with('success', 'product category updated!');
     }
 
     /**
@@ -111,9 +100,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Product_Category $product_category)
     {
-       
+         $product_category->delete();
+
+        return redirect('product_category')->with('success', 'product category deleted!');
     }
 }
-

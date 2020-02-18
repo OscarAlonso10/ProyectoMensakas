@@ -14,10 +14,9 @@ class MensakasController extends Controller
      */
     public function index()
     {
-        $deliverer = Deliverer::all()->sortByDesc("created_at");
+        $deliverers = Deliverer::all();
 
-
-    return view('llista_deliverer',["deliverer"=>$deliverer]);
+        return view('deliverer.index', compact('deliverers'));
 
     }
 
@@ -28,7 +27,7 @@ class MensakasController extends Controller
      */
     public function create()
     {
-        //
+        return view('deliverer.create');
     }
 
     /**
@@ -39,7 +38,21 @@ class MensakasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $deliverer = new Deliverer([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+            
+        ]);
+        $deliverer->save();
+        return redirect('/deliverer')->with('success', 'Deliverer saved!');
     }
 
     /**
@@ -53,7 +66,7 @@ class MensakasController extends Controller
         $deliverer = Deliverer::find($idDeliverer);
 
 
-        return view('deliverer',["deliverer"=>$deliverer]);
+        return view('deliverer/deliverer',["deliverer"=>$deliverer]);
     }
 
     /**
@@ -62,9 +75,9 @@ class MensakasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Deliverer $deliverer)
     {
-        //
+        return view('deliverer.edit', ["deliverer"=>$deliverer]);
     }
 
     /**
@@ -74,9 +87,21 @@ class MensakasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Deliverer $deliverer)
     {
-        //
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $deliverer->first_name =  $request->get('first_name');
+        $deliverer->last_name = $request->get('last_name');
+        $deliverer->email = $request->get('email');
+        $deliverer->phone = $request->get('phone');
+        $deliverer->save();
+
+        return redirect('/deliverer')->with('success', 'Deliverer updated!');
     }
 
     /**
@@ -85,8 +110,10 @@ class MensakasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Deliverer $deliverer)
     {
-        //
+        $deliverer->delete();
+
+        return redirect('deliverer')->with('success', 'Deliverer deleted!');
     }
 }

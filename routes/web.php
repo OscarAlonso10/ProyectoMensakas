@@ -49,6 +49,10 @@ Route::get('/loginConsumer', function () {
     return view('/loginConsumer');
 });
 
+Route::get('/cart', function () {
+    return view('/cart');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

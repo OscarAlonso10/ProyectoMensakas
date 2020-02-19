@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('layout');
 })->middleware('auth');
 
+Route::get('/client', function () {
+    return view('client');
+});
 
 Auth::routes();
 

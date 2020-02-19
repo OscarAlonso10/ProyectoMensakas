@@ -33,7 +33,15 @@
           <div class="form-group">
               <label for="price">Price:</label>
               <input type="number" class="form-control" name="price"/>
-          </div>                             
+          </div>
+          <div class="form-group">
+            <label for="name">Business:</label>
+              <select name="idBusiness">
+                 @foreach($businesses as $business)
+                   <option value="{{$business->idBusiness}}"> {{ $business->name }} </option>
+                 @endforeach
+              </select>
+          </div>                               
           <button type="submit" class="btn btn-primary-outline btn-success">Add Pack</button>
       </form>
   </div>

@@ -32,3 +32,9 @@ Route::resource("consumer","ConsumerController")->middleware('auth');
 Route::resource("order","OrderController")->middleware('auth');
 
 Route::resource("product","ProductController")->middleware('auth');
+
+Route::resource("product_category","Product_CategoryController")->middleware('auth');
+
+Route::resource("business_category","Business_CategoryController")->middleware('auth');
+
+Route::resource("pack","PackController")->middleware('auth');

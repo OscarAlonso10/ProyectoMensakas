@@ -36,8 +36,24 @@
           </div>
           <div class="form-group">
               <label for="type">Type:</label>
-              <input type="number" class="form-control" name="type"/>
-          </div>                               
+              <input type="text" class="form-control" name="type"/>
+          </div>
+          <div class="form-group">
+            <label for="name">Business:</label>
+              <select name="idBusiness">
+                 @foreach($businesses as $business)
+                   <option value="{{$business->idBusiness}}"> {{ $business->name }} </option>
+                 @endforeach
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Language:</label>
+              <select name="idlanguage">
+                 @foreach($languages as $language)
+                   <option value="{{$language->idlanguage}}"> {{ $language->nombre }} </option>
+                 @endforeach
+              </select>
+          </div>                             
           <button type="submit" class="btn btn-primary-outline btn-success">Add Product</button>
       </form>
   </div>

@@ -5,7 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style type="text/css">
+    body { padding-top:0%; }
+    .panel-body .btn:not(.btn-block) { width:100%;margin-bottom:10%; }
+    .navbar-nav{float: right; margin: 0;}
+    #panel1 {
+    width: 100%;
+    margin: 0 auto;
+    margin-left: 50%;
+  }
+</style>
 </head>
 <body>
     <div id="app" >
@@ -65,17 +77,32 @@
         </main>
     </div>
     <div class="container">
-  <h1>AdminPanel</h1>
-  <div class="btn-group-vertical">
-
-    <a href="business" class="btn btn-primary">Business</a>
-
-    <a href="consumer" class="btn btn-primary">Consumer</a>
-
-    <a href="order" class="btn btn-primary">Orders</a>
-
-    <a href="deliverer" class="btn btn-primary">Deliverer</a>
-  </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="panel1" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-bookmark"></span> Admin Panel</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6">
+                          <a href="consumer" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Consumer</a>
+                          <a href="business" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-home"></span> <br/>Business</a>
+                          <a href="deliverer" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-map-marker"></span> <br/>Deliverer</a>
+                          <a href="business_category" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Business Category</a>
+                        </div>
+                    <div class="col-xs-6 col-md-6">
+                          <a href="pack" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Pack</a>
+                          <a href="product" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Products</a>
+                          <a href="order" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-euro"></span> <br/>Orders</a>
+                          <a href="product_category" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>Product Category</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

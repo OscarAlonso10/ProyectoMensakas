@@ -10,7 +10,7 @@
   @endif
     <h1 class="display-3">Business Category</h1>
     <div>
-    <a style="margin: 19px;" href="{{ route('business_category.create')}}" class="btn btn-primary">New Product Category</a>
+    <a style="margin: 19px;" href="{{ route('business_category.create')}}" class="btn btn-primary">New Business Category</a>
     </div>  
  
   <table class="table table-striped">

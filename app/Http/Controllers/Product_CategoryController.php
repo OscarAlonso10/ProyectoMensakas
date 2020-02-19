@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product_Category;
+use App\Product;
+use App\Language;
 
 class Product_CategoryController extends Controller
 {
@@ -26,7 +28,9 @@ class Product_CategoryController extends Controller
      */
     public function create()
     {
-        return view('product_category.create');
+        $products = Product::all();
+        $languages = Language::all();
+        return view('product_category.create', compact('products','languages'));
     }
 
     /**
@@ -42,7 +46,9 @@ class Product_CategoryController extends Controller
         ]);
 
         $product_category = new Product_Category([
-            'name' => $request->get('name')
+            'name' => $request->get('name'),
+            'fk_product_id' => $request->get('idProduct'),
+            'fk_language_id' => $request->get('idlanguage'),
             
         ]);
         $product_category->save();

@@ -35,6 +35,7 @@
               <input type="number" class="form-control" name="phone"/>
           </div>                         
           <button type="submit" class="btn btn-primary-outline btn-success">Add Deliverer</button>
+          <a href="{{route('deliverer.index')}}" class="btn btn-primary">Back<a>
       </form>
   </div>
 </div>

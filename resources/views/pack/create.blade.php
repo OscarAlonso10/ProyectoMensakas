@@ -43,6 +43,7 @@
               </select>
           </div>                               
           <button type="submit" class="btn btn-primary-outline btn-success">Add Pack</button>
+           <a href="{{route('pack.index')}}" class="btn btn-primary">Back<a>
       </form>
   </div>
 </div>

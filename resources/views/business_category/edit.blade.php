@@ -23,6 +23,7 @@
                 <input type="text" class="form-control" name="name" value={{ $business_category->name }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{route('business_category.index')}}" class="btn btn-primary">Back<a>
         </form>
     </div>
 </div>

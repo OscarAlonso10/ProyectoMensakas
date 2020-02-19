@@ -37,6 +37,7 @@
               </select>
           </div>
           <button type="submit" class="btn btn-primary-outline btn-success">Add Product Category</button>
+          <a href="{{route('product_category.index')}}" class="btn btn-primary">Back<a>
       </form>
   </div>
 </div>

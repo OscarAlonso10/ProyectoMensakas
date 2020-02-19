@@ -55,6 +55,7 @@
               </select>
           </div>                             
           <button type="submit" class="btn btn-primary-outline btn-success">Add Product</button>
+          <a href="{{route('product.index')}}" class="btn btn-primary">Back<a>
       </form>
   </div>
 </div>

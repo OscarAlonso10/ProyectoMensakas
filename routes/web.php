@@ -23,6 +23,19 @@ Route::get('/layout', function () {
     return view('layout');
 })->middleware('auth');
 
+
+Route::get('/client', function () {
+    return view('client');
+});
+
+Route::post('/businessForLocation', function () {
+    return  view('businessForLocation');
+});
+
+Route::get('/businessForLocation', function () {
+    return view('businessForLocation')->name("hola");
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

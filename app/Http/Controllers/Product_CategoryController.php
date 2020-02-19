@@ -14,9 +14,20 @@ class Product_CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product_categories = Product_Category::all();
+
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $product_categories = Product_Category::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $product_categories = Product_Category::all();
+        }
+
+        
 
         return view('product_category.index', compact('product_categories'));
     }

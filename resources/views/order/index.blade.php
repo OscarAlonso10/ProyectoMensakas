@@ -9,6 +9,25 @@
     </div>
   @endif
     <h1 class="display-3">Order</h1>
+      <nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+
+    <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+      <option>Buscar por tipo</option>
+      <option>Name</option>
+      <option>Status</option>
+      <option>Json</option>
+      <option>ID Deliverer</option>
+    </select>
+
+
+    <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+
+
+    
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+</nav>
  
   <table class="table table-striped">
     <thead>

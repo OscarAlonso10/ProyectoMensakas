@@ -12,5 +12,11 @@ class Order extends Model
     protected $fillable = [
         'name','status', 'json'
     ];
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+        if ( ($tipo) && ($buscar) ) {
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
 }
 

@@ -12,9 +12,18 @@ class MensakasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $deliverers = Deliverer::all();
+
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $deliverers = Deliverer::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $deliverers = Deliverer::all();
+        }
 
         return view('deliverer.index', compact('deliverers'));
 

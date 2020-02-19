@@ -14,9 +14,17 @@ class Business_CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $business_categories = Business_Category::all();
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $business_categories = Business_Category::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $business_categories = Business_Category::all();
+        }
 
         return view('business_category.index', compact('business_categories'));
     }

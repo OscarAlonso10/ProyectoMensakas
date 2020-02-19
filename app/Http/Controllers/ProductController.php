@@ -14,9 +14,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $products = Product::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $products = Product::all();
+        }
+        
 
         return view('product.index', compact('products'));
     }

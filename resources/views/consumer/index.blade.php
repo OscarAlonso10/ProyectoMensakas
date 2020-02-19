@@ -12,7 +12,26 @@
     <div>
     <a style="margin: 19px;" href="{{ route('consumer.create')}}" class="btn btn-primary">New Consumer</a>
     </div>  
- 
+ <nav class="navbar navbar-light float-right">
+  <form class="form-inline">
+
+    <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+      <option>Buscar por tipo</option>
+      <option>First_Name</option>
+      <option>Last_Name</option>
+      <option>Email</option>
+      <option>Location</option>
+      <option>Phone</option>
+    </select>
+
+
+    <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+
+
+    
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
+</nav>
   <table class="table table-striped">
     <thead>
         <tr>

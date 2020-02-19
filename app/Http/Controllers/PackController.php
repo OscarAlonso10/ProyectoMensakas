@@ -14,9 +14,18 @@ class PackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $packs = Pack::all();
+    public function index(Request $request)
+    {   
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $packs = Pack::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $packs = Pack::all();
+        }
+        
 
         return view('pack.index', compact('packs'));
     }

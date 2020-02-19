@@ -18,4 +18,11 @@ class Business_Category extends Model
     public function languages(){
         return $this->belongsTo('App\Language','fk_language_id');
     }
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+        if ( ($tipo) && ($buscar) ) {
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
+
 }

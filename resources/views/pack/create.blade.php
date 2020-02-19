@@ -35,6 +35,7 @@
               <input type="number" class="form-control" name="price"/>
           </div>                             
           <button type="submit" class="btn btn-primary-outline btn-success">Add Pack</button>
+          <button href="{{ route('pack.index')}}" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Atras</button>
       </form>
   </div>
 </div>

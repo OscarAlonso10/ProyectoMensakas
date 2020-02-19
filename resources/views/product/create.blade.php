@@ -39,6 +39,7 @@
               <input type="number" class="form-control" name="type"/>
           </div>                               
           <button type="submit" class="btn btn-primary-outline btn-success">Add Product</button>
+          <button href="{{ route('product.index')}}" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Atras</button>
       </form>
   </div>
 </div>

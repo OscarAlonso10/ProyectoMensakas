@@ -39,6 +39,7 @@
               <input type="number" class="form-control" name="phone"/>
           </div>                         
           <button type="submit" class="btn btn-primary-outline btn-success">Add consumer</button>
+          <a href="{{ route('consumer.index')}}" class="btn btn-primary">Atras</a>
       </form>
   </div>
 </div>

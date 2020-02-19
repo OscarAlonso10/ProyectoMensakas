@@ -21,6 +21,7 @@
               <input type="text" class="form-control" name="name"/>
           </div>
           <button type="submit" class="btn btn-primary-outline btn-success">Add Product Category</button>
+          <button href="{{ route('product_category.index') }}" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Atras</button>
       </form>
   </div>
 </div>

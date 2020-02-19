@@ -41,6 +41,7 @@
                 <input type="number" class="form-control" name="phone" value={{ $consumer->phone }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('consumer.index')}}" class="btn btn-primary">Atras</a>
         </form>
     </div>
 </div>

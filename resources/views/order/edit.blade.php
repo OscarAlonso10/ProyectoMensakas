@@ -33,6 +33,7 @@
                 <input type="text" class="form-control" name="json" value={{ $order->json }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+            <button href="{{ route('order.index')}}" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Atras</button>
         </form>
     </div>
 </div>

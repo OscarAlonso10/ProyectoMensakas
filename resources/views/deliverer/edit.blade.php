@@ -37,6 +37,7 @@
                 <input type="number" class="form-control" name="phone" value={{ $deliverer->phone }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+            <button href="{{ route('deliverer.index')}} type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Atras</button>
         </form>
     </div>
 </div>

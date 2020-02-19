@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pack;
+use App\Business;
+
 
 class PackController extends Controller
 {
@@ -12,9 +14,18 @@ class PackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $packs = Pack::all();
+    public function index(Request $request)
+    {   
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $packs = Pack::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $packs = Pack::all();
+        }
+        
 
         return view('pack.index', compact('packs'));
     }
@@ -26,7 +37,8 @@ class PackController extends Controller
      */
     public function create()
     {
-        return view('pack.create');
+        $businesses = Business::all();
+        return view('pack.create', compact('businesses'));
     }
 
     /**
@@ -40,14 +52,16 @@ class PackController extends Controller
         $request->validate([
             'name'=>'required',
             'state'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            'idBusiness'=>'required'
         ]);
 
         $pack = new Pack([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'state' => $request->get('state'),
-            'price' => $request->get('price')
+            'price' => $request->get('price'),
+            'fk_business_id' => $request->get('idBusiness')
             
         ]);
         $pack->save();
@@ -91,11 +105,12 @@ class PackController extends Controller
          $request->validate([
             'name'=>'required',
             'state'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            
         ]);
 
         $pack->name =  $request->get('name');
-        $packs->description = $request->get('description');
+        $pack->description = $request->get('description');
         $pack->state = $request->get('state');
         $pack->price = $request->get('price');
         

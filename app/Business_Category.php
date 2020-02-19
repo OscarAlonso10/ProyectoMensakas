@@ -9,6 +9,20 @@ class Business_Category extends Model
     protected $table = 'business_Category';
     protected $primaryKey = 'idBusiness_Category';
     protected $fillable = [
-        'name'
+        'name','fk_business_id','fk_language_id'
     ];
+
+    public function business(){
+        return $this->belongsTo('App\Business','fk_business_id');
+    }
+    public function languages(){
+        return $this->belongsTo('App\Language','fk_language_id');
+    }
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+        if ( ($tipo) && ($buscar) ) {
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
+
 }

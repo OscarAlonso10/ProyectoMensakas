@@ -12,4 +12,10 @@ class Deliverer extends Model
     protected $fillable = [
         'first_name','last_name', 'email','phone',
     ];
+
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+        if ( ($tipo) && ($buscar) ) {
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
 }

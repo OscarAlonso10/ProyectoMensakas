@@ -12,9 +12,18 @@ class BusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $businesses = Business::all();
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $businesses = Business::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $businesses = Business::all();
+        }
+       
 
         return view('business.index', compact('businesses'));
 

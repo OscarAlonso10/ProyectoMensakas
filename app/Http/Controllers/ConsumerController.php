@@ -12,9 +12,18 @@ class ConsumerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $consumers = Consumer::all();
+
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $consumers = Consumer::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $consumers = Consumer::all();
+        }
 
         return view('consumer.index', compact('consumers'));
 

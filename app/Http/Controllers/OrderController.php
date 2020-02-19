@@ -11,9 +11,17 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $orders = Order::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+             $orders = Order::all();
+         }
 
         return view('order.index', compact('orders'));
 

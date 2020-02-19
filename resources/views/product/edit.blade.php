@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="type">Type:</label>
-                <input type="number" class="form-control" name="type" value={{ $product->type }} />
+                <input type="text" class="form-control" name="type" value={{ $product->type }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

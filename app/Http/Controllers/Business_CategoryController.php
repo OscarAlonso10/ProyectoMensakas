@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Business_Category
+use App\Business_Category; 
+use App\Business;
+use App\Language;
 
 class Business_CategoryController extends Controller
 {
@@ -12,9 +14,17 @@ class Business_CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $business_categories = Business_Category::all();
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $business_categories = Business_Category::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $business_categories = Business_Category::all();
+        }
 
         return view('business_category.index', compact('business_categories'));
     }
@@ -26,7 +36,9 @@ class Business_CategoryController extends Controller
      */
     public function create()
     {
-        return view('business_category.create');
+        $businesses = Business::all();
+        $languages = Language::all();
+        return view('business_category.create', compact('businesses','languages'));
     }
 
     /**
@@ -42,7 +54,9 @@ class Business_CategoryController extends Controller
         ]);
 
         $business_category = new Business_Category([
-            'name' => $request->get('name')
+            'name' => $request->get('name'),
+            'fk_business_id' => $request->get('idBusiness'),
+            'fk_language_id' => $request->get('idlanguage'),
             
         ]);
         $business_category->save();

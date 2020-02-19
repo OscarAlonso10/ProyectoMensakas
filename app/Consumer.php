@@ -13,4 +13,10 @@ class Consumer extends Model
         'first_name','last_name', 'email', 'location','phone',
     ];
 
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+        if ( ($tipo) && ($buscar) ) {
+            return $query->where($tipo,'like',"%$buscar%");
+        }
+    }
+
 }

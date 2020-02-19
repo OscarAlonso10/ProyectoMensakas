@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Business;
+use App\Language;
 
 class ProductController extends Controller
 {
@@ -12,9 +14,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
+
+        if($buscar && $tipo){
+            $products = Product::buscarpor($tipo, $buscar)->paginate(5);
+        }else{
+            $products = Product::all();
+        }
+        
 
         return view('product.index', compact('products'));
     }
@@ -25,8 +36,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('product.create');
+    {   
+        $businesses = Business::all();
+        $languages = Language::all();
+        return view('product.create', compact('businesses','languages'));
     }
 
     /**
@@ -40,7 +53,8 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required',
             'state'=>'required',
-            'price'=>'required'
+            'price'=>'required',
+            'idBusiness'=>'required'
         ]);
 
         $product = new Product([
@@ -48,7 +62,9 @@ class ProductController extends Controller
             'description' => $request->get('description'),
             'state' => $request->get('state'),
             'price' => $request->get('price'),
-            'type'=> $request->get('type')
+            'type'=> $request->get('type'),
+            'fk_business_id' => $request->get('idBusiness'),
+            'fk_language_id' => $request->get('idlanguage'),
             
         ]);
         $product->save();

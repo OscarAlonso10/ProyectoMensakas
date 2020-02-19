@@ -20,6 +20,22 @@
               <label for="name">Name:</label>
               <input type="text" class="form-control" name="name"/>
           </div>
+          <div class="form-group">
+            <label for="name">Business:</label>
+              <select name="idBusiness">
+                 @foreach($businesses as $business)
+                   <option value="{{$business->idBusiness}}"> {{ $business->name }} </option>
+                 @endforeach
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Language:</label>
+              <select name="idlanguage">
+                 @foreach($languages as $language)
+                   <option value="{{$language->idlanguage}}"> {{ $language->nombre }} </option>
+                 @endforeach
+              </select>
+          </div>
           <button type="submit" class="btn btn-primary-outline btn-success">Add Business Category</button>
       </form>
   </div>

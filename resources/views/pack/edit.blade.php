@@ -37,6 +37,7 @@
                 <input type="number" class="form-control" name="price" value={{ $pack->price }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{route('pack.index')}}" class="btn btn-primary">Back<a>
         </form>
     </div>
 </div>

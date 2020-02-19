@@ -43,6 +43,7 @@
               <input type="number" class="form-control" name="zipcode"/>
           </div>                       
           <button type="submit" class="btn btn-primary-outline btn-success">Add Business</button>
+          <a href="{{route('business.index')}}" class="btn btn-primary">Back<a>
       </form>
   </div>
 </div>

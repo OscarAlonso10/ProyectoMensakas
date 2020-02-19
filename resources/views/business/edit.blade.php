@@ -45,6 +45,7 @@
                 <input type="number" class="form-control" name="zipcode" value={{ $business->zipcode }} />
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{route('business.index')}}" class="btn btn-primary">Back<a>
         </form>
     </div>
 </div>

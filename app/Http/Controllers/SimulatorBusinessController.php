@@ -14,11 +14,4 @@ class SimulatorBusinessController extends Controller
         return view('simuladorbusiness.index',compact('business'));
     }
 
-    public function showOrders(Request $request)
-    {
-    	$businessID = $request->input('business');
-    	error_log($businessID);
-    	$orders = Order::where('fk_business_id','=',$businessID)->get();
-        return view('simuladorbusiness.showorder',compact('orders'));
-    }
 }

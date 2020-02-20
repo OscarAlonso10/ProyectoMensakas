@@ -63,8 +63,8 @@ Route::post('/simulatorbusiness', 'SimulatorController@store')->name('simulatorb
 
 Route::get('/simulatorproduct', 'SimulatorController@product')->name('simulatorproduct');
 
-
+Route::get('/productBusiness', 'ProductBusinessController@index')->name('simulator');
 
 //business
 Route::get('/selectbusiness', 'SimulatorBusinessController@index')->name('selectbusiness');
-Route::get('/showorderbusiness', 'SimulatorBusinessController@showOrders')->name('showorderbusiness');
+

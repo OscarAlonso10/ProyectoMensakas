@@ -64,7 +64,7 @@
                                 @endif
                             </div>
                         </div>
-                        <a style="margin: 19px;" href="./client" class="btn btn-primary">Consumer Simulation<a>
+                        <a style="margin: 19px;" href="./simulator" class="btn btn-primary">Consumer Simulation<a>
                     </form>
                 </div>
             </div>

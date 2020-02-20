@@ -55,3 +55,16 @@ Route::resource("product_category","Product_CategoryController")->middleware('au
 Route::resource("business_category","Business_CategoryController")->middleware('auth');
 
 Route::resource("pack","PackController")->middleware('auth');
+
+
+Route::get('/simulator', 'SimulatorController@index')->name('simulator');
+//registro consumer redirect simulator 2
+Route::post('/simulatorbusiness', 'SimulatorController@store')->name('simulatorbusiness');
+
+Route::get('/simulatorproduct', 'SimulatorController@product')->name('simulatorproduct');
+
+
+
+//business
+Route::get('/selectbusiness', 'SimulatorBusinessController@index')->name('selectbusiness');
+Route::get('/showorderbusiness', 'SimulatorBusinessController@showOrders')->name('showorderbusiness');

@@ -21,9 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/business', function () {
 	$business = Business::all()->toJson();
-    return ;
+    return $business;
 });
-97724
+
 Route::get('/product/{idBusiness}', function ($idBusiness) {
 	$product = Product::where('fk_business_id','=', $idBusiness)->get();
     return $product->toJson();

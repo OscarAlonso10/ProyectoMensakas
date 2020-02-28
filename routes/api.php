@@ -20,11 +20,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/business', function () {
-	$business = Business::all()->toJson();
-    return $business;
+	$business = Business::all();
+    return response()->json([
+        'message' => 'OK!',
+        'status' => 'OK!',
+        'business' => $business
+    ]);
+});
+
+Route::get('/business/{zipcode}', function ($zipcode) {
+	$business = Business::where('zipcode','=', $zipcode)->get();
+    return response()->json([
+        'message' => 'OK!',
+        'status' => 'OK!',
+        'business' => $business
+    ]);
 });
 
 Route::get('/product/{idBusiness}', function ($idBusiness) {
 	$product = Product::where('fk_business_id','=', $idBusiness)->get();
-    return $product->toJson();
+    return response()->json([
+        'message' => 'OK!',
+        'status' => 'OK!',
+        'product' => $product
+    ]);
 });
